@@ -2,7 +2,7 @@ import React from "react";
 import "./features.scss";
 import Feature from "../Feature/Feature";
 
-const featuresContent = [
+const features = [
   {
     title: "You are our #1 priority",
     image: "icon-chat.png",
@@ -29,7 +29,7 @@ function Features() {
   return (
     <section className="features">
       <h2 className="sr-only">Features</h2>
-      {featuresContent.map((feature, index) => (
+      {features.map((feature, index) => (
         <Feature
           key={index}
           title={feature.title}
