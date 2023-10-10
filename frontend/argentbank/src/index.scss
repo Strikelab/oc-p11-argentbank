@@ -12,6 +12,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+#root {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
 .main {
   flex: 1;
 }
