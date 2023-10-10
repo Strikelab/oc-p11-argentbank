@@ -1,6 +1,6 @@
 import React from "react";
 import "./features.scss";
-import Feature from "../Feature/Feature";
+import Feature from "../../components/Feature/Feature";
 
 const features = [
   {

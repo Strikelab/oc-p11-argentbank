@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header";
-import Accounts from "../Accounts/Accounts";
+import Header from "../../Containers/Header/Header";
+import Accounts from "../../Containers/Accounts/Accounts";
 import "./user.scss";
 
 function User() {

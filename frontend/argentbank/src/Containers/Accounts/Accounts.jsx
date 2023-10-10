@@ -1,6 +1,6 @@
 import React from "react";
 import "./accounts.scss";
-import Account from "../Account/Account";
+import Account from "../../components/Account/Account";
 const accounts = [
   {
     title: "Argent Bank Checking (x8349)",

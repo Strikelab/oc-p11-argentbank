@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import "./header.scss";
 
 let userName = "Tony Jarvis";
