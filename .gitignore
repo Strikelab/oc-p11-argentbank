@@ -1,0 +1,8 @@
+#local database
+data
+
+#vscode setup
+.vscode
+
+#environment setup
+.env
