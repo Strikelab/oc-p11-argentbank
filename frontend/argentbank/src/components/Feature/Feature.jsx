@@ -1,11 +1,12 @@
 import React from "react";
 import "./feature.scss";
 
-function Feature(props) {
-  const IMG_PATH = "../../assets/pictures/";
-  const featureImage = require(`${IMG_PATH + props.image}`);
+// const IMG_PATH = typeof process !== "undefined" ? `${process.env.PUBLIC_URL}/img/` : "/img/";
+// eslint-disable-next-line no-undef
+// const IMG_PATH = process.env.PUBLIC_URL + "/img/";
 
-  //display
+function Feature(props) {
+  const featureImage = require(`../../assets/pictures/${props.image}`);
   return (
     <div className="feature-item">
       <img src={featureImage} alt={props.alt} className="feature-icon" />
