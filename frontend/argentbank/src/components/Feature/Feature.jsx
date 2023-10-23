@@ -1,12 +1,9 @@
 import React from "react";
 import "./feature.scss";
 
-// const IMG_PATH = typeof process !== "undefined" ? `${process.env.PUBLIC_URL}/img/` : "/img/";
-// eslint-disable-next-line no-undef
-// const IMG_PATH = process.env.PUBLIC_URL + "/img/";
-
 function Feature(props) {
   const featureImage = require(`../../assets/pictures/${props.image}`);
+
   return (
     <div className="feature-item">
       <img src={featureImage} alt={props.alt} className="feature-icon" />

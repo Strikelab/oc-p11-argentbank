@@ -1,4 +1,5 @@
-.account {
+.account,
+.account__dark {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +12,17 @@
   box-sizing: border-box;
   text-align: left;
   margin-bottom: 2rem;
+  &__dark {
+    flex-direction: row;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background: #3d3d3d;
+    .account-amount {
+      font-weight: normal;
+      margin: 10px 0;
+    }
+  }
 }
 
 .account-amount {

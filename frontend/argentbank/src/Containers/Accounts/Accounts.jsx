@@ -24,11 +24,12 @@ const accounts = [
   },
 ];
 
-function Accounts() {
+function Accounts(props) {
   return (
     <>
       {accounts.map((account, index) => (
         <Account
+          style={props.style}
           key={index}
           title={account.title}
           amount={account.amount}
