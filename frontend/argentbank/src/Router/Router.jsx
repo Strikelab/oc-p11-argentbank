@@ -6,11 +6,13 @@ import Footer from "../Containers/Footer/Footer";
 import Error404 from "../Pages/Error404/Error404";
 import SignIn from "../Pages/SignIn/SIgnIn";
 import User from "../Pages/User/User";
+import TestComponent from "../components/TestComponent/TestComponent";
 import EditUsername from "../Pages/EditUsername/EditUsername";
 export default function Router() {
   return (
     <BrowserRouter>
       <Nav />
+      <TestComponent />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
