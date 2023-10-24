@@ -5,4 +5,18 @@
     max-width: 100%;
     width: 200px;
   }
+  &__image2 {
+    max-width: 100%;
+    width: 50px;
+  }
+  &__text,
+  &__text2 {
+    font-weight: 600;
+    margin-left: 10px;
+    font-size: 2rem;
+    color: #00bc78;
+  }
+  &__text2 {
+    font-weight: 500;
+  }
 }

@@ -1,8 +1,13 @@
+$nav-main-color: #42b983;
 .main-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  &__links-wrapper {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .main-nav a {
@@ -11,10 +16,11 @@
 }
 
 .main-nav a.router-link-exact-active {
-  color: #42b983;
+  color: $nav-main-color;
 }
 
 .main-nav-item {
+  display: flex;
   text-decoration: none;
   margin-right: 0rem;
   span {
@@ -24,4 +30,24 @@
 
 .main-nav-item:hover {
   text-decoration: underline;
+}
+.main-nav__green {
+  display: flex;
+  gap: 30px;
+  a {
+    color: $nav-main-color;
+    font-size: 2rem;
+    font-weight: normal;
+    span {
+      align-self: center;
+      font-size: 1.2rem;
+    }
+    &:hover {
+      color: darken($nav-main-color, 10%);
+      text-decoration: none;
+    }
+  }
+  span {
+    margin-right: 20px;
+  }
 }

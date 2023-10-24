@@ -12,7 +12,7 @@ function Account(props) {
         <p className="account-amount-description">{props.description}</p>
       </div>
       {props.style === "dark" ? (
-        <Button className="transaction-button" buttonText="DarkMode" />
+        <Button className="transaction-button-arrow" />
       ) : (
         <Button className="transaction-button" buttonText="View transactions" />
       )}

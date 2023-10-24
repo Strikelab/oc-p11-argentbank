@@ -15,6 +15,9 @@ body {
 a {
   text-decoration: none;
 }
+button:hover {
+  cursor: pointer;
+}
 #root {
   display: flex;
   flex-flow: column;

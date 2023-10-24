@@ -1,15 +1,23 @@
+$button-main-color: #00bc77;
+$button-main-text-color: #fff;
+
+button:hover {
+  cursor: pointer;
+  background: darken($button-main-color, 10%);
+  transition: ease-in-out 200ms;
+}
 .edit-button {
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
+  border-color: $button-main-color;
+  background-color: $button-main-color;
+  color: $button-main-text-color;
   font-weight: bold;
   padding: 10px;
 }
 .edit-username-button {
   border: none;
-  background-color: #00bc77;
+  background-color: $button-main-color;
   border-radius: 3px;
-  color: #fff;
+  color: $button-main-text-color;
   // font-weight: bold;
   font-size: 1rem;
   padding: 15px;
@@ -23,9 +31,9 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
+  border-color: $button-main-color;
+  background-color: $button-main-color;
+  color: $button-main-text-color;
 }
 .transaction-button {
   display: block;
@@ -34,10 +42,24 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
+  border-color: $button-main-color;
+  background-color: $button-main-color;
+  color: $button-main-text-color;
 }
+.transaction-button-arrow,
+.transaction-button-arrow:hover {
+  border: none;
+  width: 40px;
+  height: 80px;
+  background: url("../../assets/pictures/right_arrow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 @media (min-width: 720px) {
   .transaction-button {
     width: 200px;
