@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { legacy_createStore as createStore } from "redux";
 const reduxDevtools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
@@ -7,8 +7,9 @@ const reduxDevtools =
 //----------------------------------------
 // State Initial
 const initialState = {
-  value: " Initial value",
-  isConnected: true,
+  isConnected: false,
+  token: "",
+  userProfile: {},
 };
 
 //-----------------------------------------
@@ -29,10 +30,20 @@ export const firstTest = (value) => ({
   type: "firstTest",
   payload: { value: value },
 });
-// export const toggleConnexion = () => console.log("clikkk !!");
-// cette action a pour but d'inverser la valeur isConnected
-export const toggleConnexion = () => ({
-  type: "toggleConnexion",
+
+export const setConnexionFlag = (isConnected) => ({
+  type: "setConnexionFlag",
+  payload: { isConnected: isConnected },
+});
+export const setToken = (token) => ({
+  type: "setToken",
+  payload: { token: token },
+});
+export const setUserProfile = (userProfile) => ({
+  type: "setUserProfile",
+  payload: {
+    userProfile: userProfile,
+  },
 });
 // //-----------------------------------------
 //               REDUCER                  -
@@ -41,16 +52,23 @@ export const toggleConnexion = () => ({
 
 function reducer(state, action) {
   switch (action.type) {
-    case "toggleConnexion":
+    case "setConnexionFlag":
       return {
         ...state,
-        isConnected: !state.isConnected,
+        isConnected: action.payload.isConnected,
       };
-    case "firstTest":
+
+    case "setToken":
       return {
         ...state,
-        value: action.payload.value,
+        token: action.payload.token,
       };
+    case "setUserProfile":
+      return {
+        ...state,
+        userProfile: action.payload.userProfile,
+      };
+
     default:
       return state;
   }

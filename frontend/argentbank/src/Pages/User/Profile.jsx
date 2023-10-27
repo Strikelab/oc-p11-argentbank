@@ -1,9 +1,10 @@
 import React from "react";
 import Header from "../../Containers/Header/Header";
 import Accounts from "../../Containers/Accounts/Accounts";
-import "./user.scss";
+import "./profile.scss";
 
-function User() {
+
+function Profile() {
   return (
     <main className="main bg-dark">
       <Header />
@@ -13,4 +14,4 @@ function User() {
   );
 }
 
-export default User;
+export default Profile;

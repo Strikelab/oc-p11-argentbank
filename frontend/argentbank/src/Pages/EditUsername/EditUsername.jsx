@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./edit-username.scss";
 import Button from "../../components/Button/Button";
 import Accounts from "../../Containers/Accounts/Accounts";
+import { useSelector } from "react-redux";
 // CF useNavigate(-1) pour revenir sur previous page
 function EditUsername() {
+  const navigate = useNavigate()
+  const {firstName, lastName, userName} = useSelector((state) => state.userProfile);
   return (
     <main className="main">
       <div className="edit-username">
@@ -12,7 +15,7 @@ function EditUsername() {
         <form className="edit-username__form">
           <div className="edit-username__input-wrapper">
             <label htmlFor="username">User name:</label>
-            <input type="text" id="username" placeholder="User Name" />
+            <input type="text" id="username" placeholder={userName} />
           </div>
           <div className="edit-username__input-wrapper">
             <label htmlFor="first-name">First Name:</label>
@@ -20,7 +23,7 @@ function EditUsername() {
               type="text"
               id="first-name"
               disabled
-              placeholder="First Name"
+              placeholder={firstName}
             />
           </div>
           <div className="edit-username__input-wrapper">
@@ -29,14 +32,15 @@ function EditUsername() {
               type="text"
               id="last-name"
               disabled
-              placeholder="Last Name"
+              placeholder={lastName}
             />
           </div>
           <div className="edit-username__buttons-wrapper">
             <Button className="edit-username-button" buttonText="Save" />
-            <Link to="/user">
-              <Button className="edit-username-button" buttonText="Cancel" />
-            </Link>
+            {/* <Link to={navigate(0)}> */}
+            {/* <Link to={navigate(0)}> */}
+              <Button handleClick={()=>navigate("/profile")} className="edit-username-button" buttonText="Cancel" />
+            {/* </Link> */}
           </div>
         </form>
         <Accounts style="dark" />
