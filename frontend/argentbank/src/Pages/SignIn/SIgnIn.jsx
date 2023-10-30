@@ -15,7 +15,11 @@ function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,12 +81,18 @@ function SignIn() {
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={error && !isNotEmpty(password) ? "error" : ""}
             />
+                <span
+                className={`password-toggle-icon ${
+                  showPassword ? " fa fa-eye-slash" : "fa fa-eye"
+                }`}
+                onClick={togglePasswordVisibility}
+              ></span>
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
