@@ -1,7 +1,4 @@
-import { legacy_createStore as createStore } from "redux";
-const reduxDevtools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
-
+import { configureStore } from "@reduxjs/toolkit"; // Import configureStore from @reduxjs/toolkit
 //----------------------------------------
 //                STATE                  -
 //----------------------------------------
@@ -76,5 +73,11 @@ function reducer(state, action) {
 //-----------------------------------------
 //               STORE                    -
 //-----------------------------------------
-// on crée le store avec le state et le reducer
-export const store = createStore(reducer, initialState, reduxDevtools);
+// Create the Redux store with configureStore
+const store = configureStore({
+  reducer: reducer, // Provide your reducer
+  preloadedState: initialState, // Set the initial state
+  devTools: true, // Enable Redux DevTools
+});
+
+export default store;

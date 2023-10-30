@@ -5,10 +5,10 @@ import "./index.scss";
 // On importe le provider
 import { Provider } from "react-redux";
 // On importe le store
-import { store } from "./store";
+import store from "./store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store} devT>
+  <Provider store={store}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
