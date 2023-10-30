@@ -3,17 +3,31 @@ import Logo from "../../components/Logo/Logo";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./nav.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../services/AuthService";
+
 function Nav() {
   const {userName} = useSelector((state) => state.userProfile);
   const location = useLocation();
-  function displayNav() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  
+  const handleLogout = () => {
+    logout(dispatch); // Call the logout function from authService
+    navigate("/"); // Redirect to the home page or any other page
+  };
+
+  const displayNav = () => {
     if (location.pathname==="/profile") {
       return (
-        <Link to="/" className="main-nav-item">
-          <i className="fa fa-sign-out"></i>
+        <>
+        {userName && <span className="main-nav__username">{userName}</span> }
+        <Link onClick={handleLogout} to="/" className="main-nav-item">
+         <i className="fa fa-sign-out"></i>
           <span>Sign Out</span>
         </Link>
+        </>
       );
     } else if (location.pathname==="/profile/edit-username") {
       return (
