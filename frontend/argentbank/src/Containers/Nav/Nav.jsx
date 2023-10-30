@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 import "./nav.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../services/AuthService";
+import {logout} from "../../services/authService"
+
 
 function Nav() {
   const {userName} = useSelector((state) => state.userProfile);
@@ -39,7 +40,7 @@ function Nav() {
           <Link to="#" className="main-nav-item">
             <i className="fa fa-gear"></i>
           </Link>
-          <Link to="/">
+          <Link onClick={handleLogout} to="/">
             <i className="fa-solid fa-power-off"></i>
           </Link>
         </div>

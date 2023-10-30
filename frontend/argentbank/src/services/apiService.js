@@ -8,15 +8,15 @@ export const loginUser = async (email, password) => {
   const requestHeaders = {
     "Content-Type": "application/json",
   };
-  const requestBody = {
+  const requestBody = JSON.stringify({
     email,
     password,
-  };
+  });
   //eslint-disable-next-line no-useless-catch
   try {
     const response = await fetch(requestUrl, {
       method: "POST",
-      body: JSON.stringify(requestBody),
+      body: requestBody,
       headers: requestHeaders,
     });
 
@@ -43,15 +43,49 @@ export const fetchUserProfile = async (token) => {
   //eslint-disable-next-line no-useless-catch
   try {
     const response = await fetch(requestUrl, {
-      method: "POST", // Change this to GET if the profile request is a GET request
+      method: "POST",
       headers: requestHeaders,
     });
 
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       return data;
     } else {
       throw new Error("Failed to fetch user profile");
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Function to update  userName
+export const updateProfile = async (token, newUserName) => {
+  const requestUrl = `${API_URL}/user/profile`;
+  const requestHeaders = {
+    Accept: "*/*",
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+  const requestBody = JSON.stringify({
+    userName: newUserName,
+  });
+
+  //eslint-disable-next-line no-useless-catch
+  try {
+    const response = await fetch(requestUrl, {
+      method: "PUT",
+      headers: requestHeaders,
+      body: requestBody,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const userProfile = data.body;
+      console.log(userProfile);
+      return data;
+    } else {
+      throw new Error("Failed to update userName");
     }
   } catch (error) {
     throw error;
