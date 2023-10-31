@@ -28,6 +28,9 @@ export const loginUser = async (email, password) => {
       throw new Error("Failed to login");
     }
   } catch (error) {
+    if (error.message === "Failed to fetch") {
+      throw Error("A network error occured, Please try later");
+    }
     throw error;
   }
 };

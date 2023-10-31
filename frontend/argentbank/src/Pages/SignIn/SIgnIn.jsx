@@ -37,21 +37,22 @@ function SignIn() {
     }
 
     try {
-      // 1 / call API to get token
+      // 1 - call API to get token
       const loginData = await loginUser(username, password);
       const token = loginData.body.token;
 
       dispatch(setToken(token));
       localStorage.setItem("token", token);
       dispatch(setConnexionFlag(true));
-      setError(""); // Clear any previous error message
-      // 2 / Use token to fetch User Profile
+      // Clear any previous error message
+      setError("");
+      // 2 - Use token to fetch User Profile
       const userProfileData = await fetchUserProfile(token);
       const userProfile = userProfileData.body;
       dispatch(setUserProfile(userProfile));
       navigate("/profile");
     } catch (error) {
-      setError("Failed to sign in. Please try again.");
+      setError(error.message);
     }
   };
 
@@ -69,8 +70,11 @@ function SignIn() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className={
-                error && (!isNotEmpty(username) || !isValidEmail(username)) ? "error" : ""
+                error && (!isNotEmpty(username) || !isValidEmail(username))
+                  ? "error"
+                  : ""
               }
+              autoComplete="username"
             />
           </div>
           <div className="input-wrapper">
@@ -81,20 +85,25 @@ function SignIn() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className={error && !isNotEmpty(password) ? "error" : ""}
+              autoComplete="current-password"
             />
-                <span
-                className={`password-toggle-icon ${
-                  showPassword ? "reveal-icon fa fa-eye-slash" : "fa fa-eye"
-                }`}
-                onClick={togglePasswordVisibility}
-              ></span>
+            <span
+              className={`password-toggle-icon ${
+                showPassword ? "reveal-icon fa fa-eye-slash" : "fa fa-eye"
+              }`}
+              onClick={togglePasswordVisibility}
+            ></span>
           </div>
           <div className="input-remember">
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <Button type="submit" className="sign-in-button" buttonText="Sign In" />
+          <Button
+            type="submit"
+            className="sign-in-button"
+            buttonText="Sign In"
+          />
         </form>
         {error && <div className="error-message">{error}</div>}
       </section>
