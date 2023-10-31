@@ -34,7 +34,8 @@ function EditUsername() {
         if (response && response.body) {
           // Dispatch the set user profile action with the updated user profile data
           dispatch(setUserProfile(response.body));
-          navigate("/profile"); // Redirect to the profile page
+          
+          // navigate("/profile"); // Redirect to the profile page
         } else {
           setError("Failed to update username. Please try again.");
         }
@@ -71,7 +72,7 @@ function EditUsername() {
           <div className="edit-username__buttons-wrapper">
             <Button type="submit" className="edit-username-button" buttonText="Save" />
             <Button
-              onClick={() => navigate("/profile")}
+              handleClick={() => navigate("/profile")}
               className="edit-username-button"
               buttonText="Cancel"
             />

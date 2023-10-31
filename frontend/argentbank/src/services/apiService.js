@@ -1,6 +1,7 @@
 // api.js
-//eslint-disable-next-line no-undef
-const API_URL = process.env.REACT_APP_API_PATH; // Get the API URL from your environment variables
+// Get the API URL from your environment variables
+const API_URL =
+  process.env.REACT_APP_API_PATH || "http://localhost:3001/api/v1"; //eslint-disable-line no-undef
 
 // Function to make a POST request to the login endpoint
 export const loginUser = async (email, password) => {
@@ -49,9 +50,13 @@ export const fetchUserProfile = async (token) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       return data;
+    }
+    if (response.status === 401) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
     } else {
+      console.log(response);
       throw new Error("Failed to fetch user profile");
     }
   } catch (error) {

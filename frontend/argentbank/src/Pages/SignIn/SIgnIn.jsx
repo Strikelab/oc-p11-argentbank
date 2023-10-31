@@ -37,23 +37,18 @@ function SignIn() {
     }
 
     try {
-      // call API to get token
+      // 1 / call API to get token
       const loginData = await loginUser(username, password);
       const token = loginData.body.token;
 
       dispatch(setToken(token));
       localStorage.setItem("token", token);
-
       dispatch(setConnexionFlag(true));
-      localStorage.setItem("isConnected", "true");
-
       setError(""); // Clear any previous error message
-
+      // 2 / Use token to fetch User Profile
       const userProfileData = await fetchUserProfile(token);
       const userProfile = userProfileData.body;
       dispatch(setUserProfile(userProfile));
-      localStorage.setItem("userProfile", JSON.stringify(userProfile));
-
       navigate("/profile");
     } catch (error) {
       setError("Failed to sign in. Please try again.");
@@ -89,7 +84,7 @@ function SignIn() {
             />
                 <span
                 className={`password-toggle-icon ${
-                  showPassword ? " fa fa-eye-slash" : "fa fa-eye"
+                  showPassword ? "reveal-icon fa fa-eye-slash" : "fa fa-eye"
                 }`}
                 onClick={togglePasswordVisibility}
               ></span>

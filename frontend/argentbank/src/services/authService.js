@@ -5,8 +5,6 @@ import { loginUser as apiLoginUser, fetchUserProfile } from "./apiService";
 export const logout = (dispatch) => {
   // Clear user information from localStorage
   localStorage.removeItem("token");
-  localStorage.removeItem("userProfile");
-  localStorage.removeItem("isConnected"); // If you set this value
 
   // Reset the Redux state by dispatching appropriate actions
   dispatch(setToken(""));
@@ -21,14 +19,11 @@ export const loginUser = async (userName, password, dispatch, navigate) => {
 
     dispatch(setToken(token));
     localStorage.setItem("token", token);
-
     dispatch(setConnexionFlag(true));
-    localStorage.setItem("isConnected", "true");
 
     const userProfileData = await fetchUserProfile(token);
     const userProfile = userProfileData.body;
     dispatch(setUserProfile(userProfile));
-    localStorage.setItem("userProfile", JSON.stringify(userProfile));
 
     navigate("/profile");
     // Return null or an empty string to indicate success (no error)

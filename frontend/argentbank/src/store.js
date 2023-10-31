@@ -1,27 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit"; // Import configureStore from @reduxjs/toolkit
+import thunk from "redux-thunk"; // Import redux-thunk
 //----------------------------------------
 //                STATE                  -
 //----------------------------------------
 // State Initial
 const initialState = {
   isConnected: false,
-  token: "",
+  token: null,
   userProfile: {},
 };
 
 //-----------------------------------------
 //                ACTIONS                 -
 //-----------------------------------------
-//Objet Javascript
-//Décrire la raison de changement de state
-//Propriété obligatoire : type
-//Propriété optionnelle : payload
-
-// const monTestAction = {
-//   type = "monTest"
-//   payload:{uneValeur:"maValeur"}
-// }
-
 // Action créator
 export const firstTest = (value) => ({
   type: "firstTest",
@@ -45,8 +36,7 @@ export const setUserProfile = (userProfile) => ({
 // //-----------------------------------------
 //               REDUCER                  -
 //-----------------------------------------
-// Prend une action et un state en paramètres, et retourne un state.
-
+// Takes action and state as parameter and return a state.
 function reducer(state, action) {
   switch (action.type) {
     case "setConnexionFlag":
@@ -75,7 +65,8 @@ function reducer(state, action) {
 //-----------------------------------------
 // Create the Redux store with configureStore
 const store = configureStore({
-  reducer: reducer, // Provide your reducer
+  reducer: reducer, // reducer
+  middleware: [thunk],
   preloadedState: initialState, // Set the initial state
   devTools: true, // Enable Redux DevTools
 });
