@@ -1,5 +1,5 @@
 // apiService.js
-// Get the API URL from your environment variables
+// Get the API URL from the environment variables
 const API_URL =
   process.env.REACT_APP_API_PATH || "http://localhost:3001/api/v1"; //eslint-disable-line no-undef
 
@@ -13,7 +13,7 @@ export const loginUser = async (email, password) => {
     email,
     password,
   });
-  //eslint-disable-next-line no-useless-catch
+
   try {
     const response = await fetch(requestUrl, {
       method: "POST",
@@ -67,7 +67,7 @@ export const fetchUserProfile = async (token) => {
   }
 };
 
-// Function to update  userName
+// Function to update the user's username
 export const updateProfile = async (token, newUserName) => {
   const requestUrl = `${API_URL}/user/profile`;
   const requestHeaders = {

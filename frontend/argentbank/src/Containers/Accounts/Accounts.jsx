@@ -1,6 +1,8 @@
 import React from "react";
 import "./accounts.scss";
 import Account from "../../components/Account/Account";
+
+// Sample account data
 const accounts = [
   {
     title: "Argent Bank Checking (x8349)",

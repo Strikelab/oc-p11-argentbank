@@ -2,6 +2,7 @@ import React from "react";
 import "./feature.scss";
 
 function Feature(props) {
+  // Dynamically load the feature image from the assets folder based on the provided image filename
   const featureImage = require(`../../assets/pictures/${props.image}`);
 
   return (

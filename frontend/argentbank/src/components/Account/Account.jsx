@@ -3,6 +3,7 @@ import "./account.scss";
 import Button from "../Button/Button";
 
 function Account(props) {
+  // Render an account section with a dynamic style based on 'props.style'
   return (
     <section className={`account${props.style ? "__" + props.style : ""}`}>
       <div className="account-content-wrapper">

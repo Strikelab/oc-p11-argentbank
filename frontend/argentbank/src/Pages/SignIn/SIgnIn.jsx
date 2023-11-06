@@ -1,62 +1,59 @@
+//SignIn.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  setToken,
-  setConnexionFlag,
-  setUserProfile,
-} from "../../store/userSlice";
 import Button from "../../components/Button/Button";
 import "./sign-in.scss";
 import { useDispatch } from "react-redux";
-import { loginUser, fetchUserProfile } from "../../services/apiService";
 import { isNotEmpty, isValidEmail } from "../../services/validationService";
+import { signInAsync } from "../../store/userSlice";
 
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // Define local state variables for controlled inputs
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
+  // Local state to check form inputs and display error messages to the user.
+  const [formState, setFormState] = useState({
+    username: "",
+    password: "",
+    error: "",
+    showPassword: false,
+    rememberMe: false,
+  });
+  // Toggle password visibility for the password input field.
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setFormState({
+      ...formState,
+      showPassword: !formState.showPassword,
+    });
   };
+  // Handle form submission.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const { username, password, rememberMe } = formState;
+
     if (!isNotEmpty(username)) {
-      setError("Username is required.");
+      setFormState({ ...formState, error: "Username is required." });
       return;
     }
     if (!isValidEmail(username)) {
-      setError("Username must be a valid email address.");
+      setFormState({
+        ...formState,
+        error: "Username must be a valid email address.",
+      });
       return;
     }
     if (!isNotEmpty(password)) {
-      setError("Password is required.");
+      setFormState({ ...formState, error: "Password is required." });
       return;
     }
-
-    try {
-      // 1 - call API to get token
-      const loginData = await loginUser(username, password);
-      const token = loginData.body.token;
-
-      dispatch(setToken(token));
-      localStorage.setItem("token", token);
-      dispatch(setConnexionFlag(true));
-      // Clear any previous error message
-      setError("");
-      // 2 - Use token to fetch User Profile
-      const userProfileData = await fetchUserProfile(token);
-      const userProfile = userProfileData.body;
-      dispatch(setUserProfile(userProfile));
-      navigate("/profile");
-    } catch (error) {
-      setError(error.message);
+    // Dispatch the signInAsync action to handle user authentication.
+    const signInResult = await dispatch(
+      signInAsync(username, password, rememberMe)
+    );
+    if (signInResult === true) {
+      navigate("/profile"); // Redirect to the user profile page on success.
+    } else if (signInResult && signInResult.success === false) {
+      setFormState({ ...formState, error: signInResult.error.message });
     }
   };
 
@@ -71,10 +68,14 @@ function SignIn() {
             <input
               type="text"
               id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={formState.username}
+              onChange={(e) =>
+                setFormState({ ...formState, username: e.target.value })
+              }
               className={
-                error && (!isNotEmpty(username) || !isValidEmail(username))
+                formState.error &&
+                (!isNotEmpty(formState.username) ||
+                  !isValidEmail(formState.username))
                   ? "error"
                   : ""
               }
@@ -84,22 +85,40 @@ function SignIn() {
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
-              type={showPassword ? "text" : "password"}
+              type={formState.showPassword ? "text" : "password"}
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={error && !isNotEmpty(password) ? "error" : ""}
+              value={formState.password}
+              onChange={(e) =>
+                setFormState({ ...formState, password: e.target.value })
+              }
+              className={
+                formState.error && !isNotEmpty(formState.password)
+                  ? "error"
+                  : ""
+              }
               autoComplete="current-password"
             />
             <span
               className={`password-toggle-icon ${
-                showPassword ? "reveal-icon fa fa-eye-slash" : "fa fa-eye"
+                formState.showPassword
+                  ? "reveal-icon fa fa-eye-slash"
+                  : "fa fa-eye"
               }`}
               onClick={togglePasswordVisibility}
             ></span>
           </div>
           <div className="input-remember">
-            <input type="checkbox" id="remember-me" />
+            <input
+              type="checkbox"
+              id="remember-me"
+              checked={formState.rememberMe}
+              onChange={() =>
+                setFormState({
+                  ...formState,
+                  rememberMe: !formState.rememberMe,
+                })
+              }
+            />
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
@@ -109,7 +128,9 @@ function SignIn() {
             buttonText="Sign In"
           />
         </form>
-        {error && <div className="error-message">{error}</div>}
+        {formState.error && (
+          <div className="error-message">{formState.error}</div>
+        )}
       </section>
     </main>
   );

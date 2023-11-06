@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const AuthGuard = ({ children }) => {
+  // Retrieve the authentication state from the Redux store
   const isConnected = useSelector((state) => state.isConnected);
+  // State to manage loading state
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const AuthGuard = ({ children }) => {
     // He will be redirected to the login page
     return <Navigate to="/sign-in" />;
   }
-
+  // User is authenticated, render the protected content
   return children;
 };
 

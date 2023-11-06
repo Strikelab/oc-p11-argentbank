@@ -2,6 +2,7 @@ import React from "react";
 import "./features.scss";
 import Feature from "../../components/Feature/Feature";
 
+// Sample feature data
 const features = [
   {
     title: "You are our #1 priority",

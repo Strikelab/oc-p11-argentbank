@@ -9,6 +9,13 @@
     margin: auto;
     width: 50vw;
   }
+  &__error-input {
+    border: 1px solid red;
+  }
+  &__error-message {
+    color: red;
+    height: 40px;
+  }
   &__input-wrapper {
     padding: 5px;
 
@@ -27,7 +34,7 @@
     }
   }
   &__buttons-wrapper {
-    margin: 40px 0;
+    margin: 40px 0 0;
     display: flex;
     gap: 0.5em;
     justify-content: center;
