@@ -1,4 +1,4 @@
-// api.js
+// apiService.js
 // Get the API URL from your environment variables
 const API_URL =
   process.env.REACT_APP_API_PATH || "http://localhost:3001/api/v1"; //eslint-disable-line no-undef

@@ -1,3 +1,4 @@
+//store.js
 import { configureStore } from "@reduxjs/toolkit"; // Import configureStore from @reduxjs/toolkit
 import thunk from "redux-thunk"; // Import redux-thunk
 //----------------------------------------

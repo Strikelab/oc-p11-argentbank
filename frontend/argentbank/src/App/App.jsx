@@ -1,3 +1,4 @@
+//App.jsx
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setToken, setConnexionFlag, setUserProfile } from "../store"; // Import Redux actions
