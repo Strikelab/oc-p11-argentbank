@@ -1,7 +1,7 @@
 //App.jsx
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setToken, setConnexionFlag, setUserProfile } from "../store"; // Import Redux actions
+import { setToken, setConnexionFlag, setUserProfile } from "../store/userSlice"; // Import Redux actions
 import Router from "../Router/Router";
 import { fetchUserProfile } from "../services/apiService"; // Import the API service function to fetch user profile
 

@@ -1,5 +1,5 @@
 // authService.js
-import { setToken, setUserProfile, setConnexionFlag } from "../store";
+import { setToken, setUserProfile, setConnexionFlag } from "../store/userSlice";
 import { loginUser as apiLoginUser, fetchUserProfile } from "./apiService";
 
 export const logout = (dispatch) => {

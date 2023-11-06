@@ -5,12 +5,14 @@ import Button from "../../components/Button/Button";
 import Accounts from "../../Containers/Accounts/Accounts";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile } from "../../services/apiService";
-import { setUserProfile } from "../../store";
+import { setUserProfile } from "../../store/userSlice";
 
 function EditUsername() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { firstName, lastName, userName } = useSelector((state) => state.userProfile);
+  const { firstName, lastName, userName } = useSelector(
+    (state) => state.userProfile
+  );
   const token = useSelector((state) => state.token);
 
   const [newUsername, setNewUsername] = useState(userName);
@@ -34,14 +36,14 @@ function EditUsername() {
         if (response && response.body) {
           // Dispatch the set user profile action with the updated user profile data
           dispatch(setUserProfile(response.body));
-          
+
           // navigate("/profile"); // Redirect to the profile page
         } else {
           setError("Failed to update username. Please try again.");
         }
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         setError("An error occurred while updating the username.");
       });
   };
@@ -63,14 +65,23 @@ function EditUsername() {
           </div>
           <div className="edit-username__input-wrapper">
             <label htmlFor="first-name">First Name:</label>
-            <input type="text" id="first-name" disabled placeholder={firstName} />
+            <input
+              type="text"
+              id="first-name"
+              disabled
+              placeholder={firstName}
+            />
           </div>
           <div className="edit-username__input-wrapper">
             <label htmlFor="last-name">Last Name:</label>
             <input type="text" id="last-name" disabled placeholder={lastName} />
           </div>
           <div className="edit-username__buttons-wrapper">
-            <Button type="submit" className="edit-username-button" buttonText="Save" />
+            <Button
+              type="submit"
+              className="edit-username-button"
+              buttonText="Save"
+            />
             <Button
               handleClick={() => navigate("/profile")}
               className="edit-username-button"

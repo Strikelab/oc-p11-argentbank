@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setToken, setConnexionFlag, setUserProfile } from "../../store";
+import {
+  setToken,
+  setConnexionFlag,
+  setUserProfile,
+} from "../../store/userSlice";
 import Button from "../../components/Button/Button";
 import "./sign-in.scss";
 import { useDispatch } from "react-redux";
