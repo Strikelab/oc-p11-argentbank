@@ -41,7 +41,8 @@ export const fetchUserProfileAsync = (token) => {
       dispatch(setUserProfile(userProfile));
     } catch (error) {
       if (error.message === "invalid token") {
-        // Handle the error by updating the connection state        dispatch(setConnexionFlag(false));
+        // Handle the error by updating the connection state
+        dispatch(setConnexionFlag(false));
         console.error("Invalid token. Logging out.");
       } else {
         // Handle other errors here

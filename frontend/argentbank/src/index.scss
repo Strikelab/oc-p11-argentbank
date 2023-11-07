@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "rehn-bold";
+  src: local("rehn-bold.woff"),
+    url(./assets/fonts/rehn-bold.woff) format("woff");
+}
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

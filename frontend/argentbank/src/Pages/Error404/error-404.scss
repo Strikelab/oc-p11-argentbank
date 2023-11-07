@@ -1,0 +1,25 @@
+$error-color1: #00bc78;
+$error-color2: #005834;
+
+.error404 {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 100vh;
+  }
+  &__error-message {
+    margin: 20vh 0 2vh;
+    font-size: 5rem;
+    font-family: "rehn-bold";
+    color: $error-color1;
+    span {
+      color: $error-color2;
+    }
+  }
+  &__back-link {
+    font-weight: 500;
+    color: $error-color2;
+    text-decoration: underline;
+  }
+}
