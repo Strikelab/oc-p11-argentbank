@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "rehn-bold";
+  src: local("rehn-bold.woff"),
+    url(../../assets/fonts/rehn-bold.woff) format("woff");
+}
+.logo {
+  font-family: "rehn-bold.woff";
+  font-size: 2rem;
+  font-weight: bold;
+  &__part1 {
+    font-family: "rehn-bold.woff";
+    color: #00bc78;
+  }
+  &__part2 {
+    font-family: "rehn-bold.woff";
+    color: #005834;
+  }
+}

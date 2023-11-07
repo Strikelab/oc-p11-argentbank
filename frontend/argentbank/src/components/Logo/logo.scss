@@ -1,22 +1,32 @@
+$logo-color1: #00bc78;
+$logo-color2: #005834;
+@font-face {
+  font-family: "rehn-bold";
+  src: local("rehn-bold.woff"),
+    url(../../assets/fonts/rehn-bold.woff) format("woff");
+}
 .logo {
+  height: 55px;
   display: flex;
   align-items: center;
-  &__image {
-    max-width: 100%;
-    width: 200px;
+  h1 {
+    color: $logo-color1;
+    font-weight: 500;
+    font-size: 2rem;
   }
-  &__image2 {
+  &__text-v1 {
+    font-family: "rehn-bold";
+  }
+  &__color2 {
+    color: $logo-color2;
+  }
+
+  &__image {
     max-width: 100%;
     width: 50px;
   }
-  &__text,
-  &__text2 {
+  &__text-v2 {
     font-weight: 600;
-    margin-left: 10px;
-    font-size: 2rem;
-    color: #00bc78;
-  }
-  &__text2 {
-    font-weight: 500;
+    margin: 0 10px;
   }
 }
