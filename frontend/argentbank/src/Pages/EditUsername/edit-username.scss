@@ -18,14 +18,15 @@
   }
   &__input-wrapper {
     padding: 5px;
+    width: 100%;
 
     label {
       font-size: 1em;
+      margin-right: 10px;
     }
     input {
       width: 10em;
       font-size: 1em;
-      margin-left: 10px;
       padding: 0.5rem;
       border-radius: 5px;
     }
@@ -38,5 +39,10 @@
     display: flex;
     gap: 0.5em;
     justify-content: center;
+  }
+}
+@media screen and (max-width: 479px) {
+  label {
+    margin: 0;
   }
 }

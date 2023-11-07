@@ -14,6 +14,7 @@ button:hover {
   padding: 10px;
 }
 .edit-username-button {
+  min-width: 140px;
   border: none;
   background-color: $button-main-color;
   border-radius: 3px;

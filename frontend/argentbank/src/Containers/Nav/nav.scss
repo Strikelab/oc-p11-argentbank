@@ -7,6 +7,7 @@ $nav-main-color: #42b983;
   &__links-wrapper {
     display: flex;
     gap: 10px;
+    align-items: center;
   }
   &__username {
     font-weight: bold;
@@ -52,5 +53,21 @@ $nav-main-color: #42b983;
   }
   span {
     margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .main-nav {
+    padding: 5px 10px;
+  }
+  .main-nav-item {
+    &__signout {
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+  }
+  .main-nav__green {
+    gap: 20px;
   }
 }

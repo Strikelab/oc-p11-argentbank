@@ -2,3 +2,11 @@
   color: #fff;
   margin-bottom: 2rem;
 }
+@media screen and (max-width: 479px) {
+  header {
+    h1 {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

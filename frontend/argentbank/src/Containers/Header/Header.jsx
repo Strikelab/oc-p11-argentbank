@@ -9,12 +9,15 @@ function Header() {
   const { firstName, lastName } = useSelector((state) => state.userProfile);
 
   return (
-    <div className="header">
-      <h1>{`Welcome back ${firstName} ${lastName} !`}</h1>
+    <header className="header">
+      <h1>
+        <span>Welcome back</span>
+        <span>{` ${firstName} ${lastName} !`}</span>
+      </h1>
       <Link to="edit-username">
         <Button className="edit-button" buttonText="Edit Name" />
       </Link>
-    </div>
+    </header>
   );
 }
 

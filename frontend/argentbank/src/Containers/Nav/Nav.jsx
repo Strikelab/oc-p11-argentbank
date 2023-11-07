@@ -48,7 +48,7 @@ function Nav() {
         </Link>
         <Link onClick={handleLogout} to="/" className="main-nav-item">
           <i className="fa fa-sign-out"></i>
-          <span>Sign Out</span>
+          <span className="main-nav-item__signout">Sign Out</span>
         </Link>
       </>
     ) : (
