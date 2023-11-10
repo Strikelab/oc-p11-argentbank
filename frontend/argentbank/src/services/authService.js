@@ -1,15 +1,16 @@
 // authService.js
-import { setToken, setUserProfile, setConnexionFlag } from "../store/userSlice";
+import {
+  setToken,
+  setUserProfile,
+  setConnexionFlag,
+  resetUserProfile,
+} from "../store/userSlice";
 import { loginUser as apiLoginUser, fetchUserProfile } from "./apiService";
-
 export const logout = (dispatch) => {
   // Clear user information from localStorage
   localStorage.removeItem("token");
-
   // Reset the Redux state by dispatching appropriate actions
-  dispatch(setToken(""));
-  dispatch(setUserProfile({}));
-  dispatch(setConnexionFlag(false)); // If you set this value
+  dispatch(resetUserProfile());
 };
 
 export const loginUser = async (userName, password, dispatch, navigate) => {

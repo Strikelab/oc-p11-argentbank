@@ -5,15 +5,17 @@ import {
   updateProfile,
   loginUser,
 } from "../services/apiService";
-
+import { logout } from "../services/authService";
+//define initialState outside of slice to reuse this value in the slice and in reducer.
+const initialState = {
+  isConnected: false, // Indicates whether the user is connected
+  token: null, // User authentication token
+  userProfile: {}, // User profile informations
+};
 // Create a Redux slice for managing user-related state
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    isConnected: false, // Indicates whether the user is connected
-    token: null, // User authentication token
-    userProfile: {}, // User profile informations
-  },
+  initialState,
   reducers: {
     // Reducer to set the connection flag
     setConnexionFlag: (state, action) => {
@@ -27,10 +29,13 @@ const userSlice = createSlice({
     setUserProfile: (state, action) => {
       state.userProfile = action.payload;
     },
+    // Add a reset action to reset the state to initialState
+    resetUserProfile: () => initialState,
   },
 });
 // Export action creators for the reducers
-export const { setConnexionFlag, setToken, setUserProfile } = userSlice.actions;
+export const { setConnexionFlag, setToken, setUserProfile, resetUserProfile } =
+  userSlice.actions;
 
 // Async action to fetch the user profile using the provided token
 export const fetchUserProfileAsync = (token) => {
@@ -42,7 +47,7 @@ export const fetchUserProfileAsync = (token) => {
     } catch (error) {
       if (error.message === "invalid token") {
         // Handle the error by updating the connection state
-        dispatch(setConnexionFlag(false));
+        logout(dispatch);
         console.error("Invalid token. Logging out.");
       } else {
         // Handle other errors here
