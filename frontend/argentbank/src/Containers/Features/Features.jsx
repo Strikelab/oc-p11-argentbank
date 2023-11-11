@@ -6,20 +6,20 @@ import Feature from "../../components/Feature/Feature";
 const features = [
   {
     title: "You are our #1 priority",
-    image: "icon-chat.png",
+    image: "icon-chat.webp",
     alt: "chat icon",
     texte:
       "Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes.",
   },
   {
     title: "More savings means higher rates",
-    image: "icon-money.png",
+    image: "icon-money.webp",
     alt: "money icon",
     texte: "The more you save with us, the higher your interest rate will be!",
   },
   {
     title: "Security you can trust",
-    image: "icon-security.png",
+    image: "icon-security.webp",
     alt: "security icon",
     texte:
       "We use top of the line encryption to make sure your data and money is always safe.",
