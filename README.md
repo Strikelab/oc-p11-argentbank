@@ -1,56 +1,51 @@
 # oc-p11-argentbank
-
-Projet N°11 du parcours intégrateur web OpenClassrooms
-
+ Projet N°11 du parcours intégrateur web OpenClassrooms
+ 
 [![Money Money Money !!!](https://ftp.strikelab.fr/images/oc/argentbank_preview.png)](https://oc-argentbank.strikelab.fr/)
 
 ## Live demo:
-
 [https://oc-argentbank.strikelab.fr](https://oc-argentbank.strikelab.fr/)
 
-## Swagger API Proposal:
+## Swagger Proposal:
+[https://oc-argentbank.strikelab.fr/api-docs/](https://oc-argentbank.strikelab.fr/api-docs/)
 
-Explore the proposed API endpoints using Swagger documentation. The API is designed to provide comprehensive functionality for the project.
+## Technologies
+- React
+- Redux
+- Node
+- Express
+- MongoDB Atlas
 
-[Swagger Documentation](https://oc-argentbank.strikelab.fr/api-docs/)
+## Installation
 
-Feel free to review the API documentation to understand the available endpoints, request methods, and expected responses.
+To run this React app locally, follow these steps:
 
-For any questions or suggestions related to the API, please feel free to reach out.
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/Strikelab/oc-p11-argentbank.git
+    ```
 
+2. **Navigate to the project directory:**
+    ```bash
+    cd oc-p11-argentbank/frontend/argentbank
+    ```
 
-## Running the Backend:
+3. **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-To use the backend, ensure you have Node.js version 16.20.2 installed. You can follow these steps using Node Version Manager (NVM):
+4. **Start the development server:**
+    ```bash
+    npm start
+    ```
 
-1. **Install NVM:**
-    - If you don't have NVM installed, you can follow these steps:
-        - Install NVM by following the instructions at [https://github.com/nvm-sh/nvm](https://github.com/nvm-sh/nvm).
-        - Open a new terminal window.
+The app should now be running locally. Open your browser and go to http://localhost:3000 to view it.
 
-2. **Install Node.js version 16.20.2:**
-    - Run the following command to install Node.js version 16.20.2:
-        ```bash
-        nvm install 16.20.2
-        ```
+## Auteurs
 
-3. **Set Node.js version 16.20.2 as the default for your project:**
-    - Once the installation is complete, set Node.js version 16.20.2 as the default for your project:
-        ```bash
-        nvm use 16.20.2
-        ```
+- StrikeLab contact@strikelab.fr
 
-Now your project should be running with Node.js version 16.20.2.
+## License
 
-## Legacy API:
-
-- The original OpenClassrooms API is available here: [Openclassrooms's legacy API](https://github.com/OpenClassrooms-Student-Center/ArgentBank-website).
-- Please note: As of the last check, the OpenClassrooms API is not actively maintained and may have stability issues. It currently relies on Node.js version <17.
-
-Feel free to use any API of your choice. You just need to create a link to your API.
-
-Please note: Configuration details, including sensitive information, may be stored in a `.env` file.  
-When linking to your API, ensure that the path is configured in the `.env` file. You can set the API path by adding the following line:
-
-```env
-REACT_APP_API_PATH=YOUR_API_URL
+Ce projet est sous la licence GNU GPL V3 - voir le fichier [LICENSE](LICENSE) pour plus de détails
