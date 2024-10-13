@@ -1,7 +1,7 @@
 # oc-p11-argentbank
  Projet N°11 du parcours intégrateur web OpenClassrooms
  
-[![Money Money Money !!!](https://ftp.strikelab.fr/images/oc/argentbank_preview.png)](https://oc-argentbank.strikelab.fr/)
+[![Money Money Money !!!](https://share.nvlb.fr/images/oc/argentbank_preview.png)](https://oc-argentbank.strikelab.fr/)
 
 ## Live demo:
 [https://oc-argentbank.strikelab.fr](https://oc-argentbank.strikelab.fr/)
